@@ -1,19 +1,13 @@
 // define a function named Vue
+import { reactive } from './reactive.js'
 function Vue(options) {
   this._init(options)
 }
 
 Vue.prototype._init = function (options) {
-  Object.keys(options.data).forEach(key => {
-    Object.defineProperty(this, key, {
-      get: function () {
-        return options.data[key]
-      },
-      set: function (newVal) {
-        options.data[key] = newVal
-      }
-    })
-  })
+  if(options.data) {
+    this._data = reactive(this, options.data)
+  }
 }
 
 export default Vue

@@ -4,13 +4,17 @@
   </head>
   <body>
     <div id="app">
-      {{ message }}}
     </div>
     <script src="../dist/bundle.js"></script>
     <script>
-      console.log("hello tiny Vue2");
-      console.log(new Vue({}));
+      var app = new Vue({
+        data: {
+          message: 'hello world'
+        },
+        render: function() {
+          return h('div', this.message)
+        }
+      })
     </script>
-    <h1>Test</h1>
   </body>
 </html>
